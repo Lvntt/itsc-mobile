@@ -4,4 +4,15 @@
     <string name="member">Профиль</string>
     <string name="education">● Учится в %s</string>
     <string name="additional_info_circle">● %s</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Настройки</string>
+
+    <string name="menu_home_drawer_label">Домашняя страница</string>
+    <string name="menu_home">Team XD</string>
+    <string name="menu_settings">Настройки</string>
 </resources>
