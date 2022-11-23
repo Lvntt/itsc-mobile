@@ -14,6 +14,6 @@ class MainActivity : AppCompatActivity() {
         val teamMemberDataset = DataSource.teamMembers
 
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
-        recyclerView.adapter = TeamMemberCardAdapter(this, teamMemberDataset)
+        recyclerView.adapter = TeamMemberCardAdapter(teamMemberDataset)
     }
 }
