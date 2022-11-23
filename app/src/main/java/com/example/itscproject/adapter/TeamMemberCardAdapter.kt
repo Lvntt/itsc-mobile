@@ -1,26 +1,35 @@
 package com.example.itscproject.adapter
 
-import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView.ItemView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.itscproject.R
+import com.example.itscproject.TeamMemberActivity
 import com.example.itscproject.model.TeamMember
 
-class TeamMemberCardAdapter (
-    private val context: Context,
+class TeamMemberCardAdapter(
     private val dataset: List<TeamMember>
-    ) : RecyclerView.Adapter<TeamMemberCardAdapter.ItemViewHolder>() {
+) : RecyclerView.Adapter<TeamMemberCardAdapter.ItemViewHolder>() {
 
     class ItemViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
         val teamMemberPhoto: ImageView = view.findViewById(R.id.team_member_photo)
         val teamMemberName: TextView = view.findViewById(R.id.team_member_name)
         val teamMemberRole: TextView = view.findViewById(R.id.team_member_role)
         val teamMemberEducation: TextView = view.findViewById(R.id.team_member_education)
+        var id: Int = 0
+        init {
+            view.setOnClickListener {
+                val intent = Intent(view.context,TeamMemberActivity::class.java)
+                intent.putExtra("ID",id)
+                startActivity(view.context,intent,null)
+            }
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -32,6 +41,7 @@ class TeamMemberCardAdapter (
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val teamMember = dataset[position]
+        holder.id = teamMember.id
         holder.teamMemberPhoto.setImageResource(teamMember.imageResourceId)
         holder.teamMemberName.text = teamMember.name
         holder.teamMemberRole.text = teamMember.role

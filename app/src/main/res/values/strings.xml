@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ITSCProject</string>
+    <string name="additional_info">Дополнительная информация</string>
+    <string name="member">Профиль</string>
+    <string name="education">● Учится в %s</string>
+    <string name="additional_info_circle">● %s</string>
 </resources>

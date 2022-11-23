@@ -13,6 +13,18 @@
         android:theme="@style/Theme.ITSCProject"
         tools:targetApi="31">
         <activity
+            android:name=".TeamMemberActivity"
+            android:label="@string/member"
+            android:exported="false"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.itscproject.MainActivity"/>
+        </activity>
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
