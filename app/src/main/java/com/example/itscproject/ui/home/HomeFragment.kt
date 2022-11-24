@@ -8,10 +8,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.itscproject.R
 import com.example.itscproject.adapter.TeamMemberCardAdapter
 import com.example.itscproject.databinding.FragmentHomeBinding
 import com.example.itscproject.requests.PostsApiClient
 import com.example.itscproject.requests.PostsResponse
+import com.google.android.material.snackbar.Snackbar
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -42,12 +44,18 @@ class HomeFragment : Fragment() {
 
         call.enqueue(object: Callback<PostsResponse> {
             override fun onResponse(call: Call<PostsResponse>, response: Response<PostsResponse>) {
-                val teamMembers = response.body()!!.data
-                recyclerView.adapter = TeamMemberCardAdapter(teamMembers)
+                if(response.body()!=null) {
+                    val teamMembers = response.body()!!.data
+                    recyclerView.adapter = TeamMemberCardAdapter(teamMembers)
+                }
+                else{
+                    Snackbar.make(root, R.string.data_error,Snackbar.LENGTH_LONG).show()
+                }
             }
 
             override fun onFailure(call: Call<PostsResponse>, t: Throwable) {
                 Log.e(TAG, t.toString())
+                Snackbar.make(root, R.string.data_error,Snackbar.LENGTH_LONG).show()
             }
 
         })
