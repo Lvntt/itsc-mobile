@@ -46,13 +46,15 @@ class TeamMemberCardAdapter(
     }
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
+        val context = holder.itemView.context;
         val teamMember = dataset[position]
         holder.teamMember = teamMember
         // holder.teamMemberPhoto.setImageResource(teamMember.imageResourceId)
         holder.teamMemberPhoto.text = teamMember.photo
-        holder.teamMemberName.text = teamMember.name
+        holder.teamMemberName.text = context.getString(R.string.nameSurname, teamMember.name, teamMember.surname)
         holder.teamMemberRole.text = teamMember.role
         holder.teamMemberEducation.text = teamMember.education
+
     }
 
     override fun getItemCount() = dataset.size

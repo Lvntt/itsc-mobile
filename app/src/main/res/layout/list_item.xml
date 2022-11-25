@@ -21,10 +21,10 @@
 
             android:background="@drawable/round_outline"
             android:clipToOutline="true"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/frankie" />
+            app:srcCompat="@drawable/user_placeholder" />
 
         <TextView
             android:id="@+id/team_member_name"
