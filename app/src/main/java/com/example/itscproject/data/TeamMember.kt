@@ -1,4 +1,4 @@
-package com.example.itscproject.requests
+package com.example.itscproject.data
 
 import com.google.gson.annotations.SerializedName
 
@@ -17,8 +17,6 @@ data class TeamMember(
     var education: String?,
     @SerializedName("additional")
     var additional: String?,
-    @SerializedName("photo")
-    var photo: String?,
     @SerializedName("created_at")
     var createdAt: String?,
     @SerializedName("updated_at")

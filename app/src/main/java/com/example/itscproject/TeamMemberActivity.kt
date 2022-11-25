@@ -15,7 +15,6 @@ class TeamMemberActivity : AppCompatActivity() {
         val memberRole = findViewById<TextView>(R.id.team_member_info_role)
         val memberEducation = findViewById<TextView>(R.id.team_member_info_education)
         val memberAdditionalInfo = findViewById<TextView>(R.id.team_member_info_additional_text)
-        memberPhoto.text = intent.getStringExtra("photo")
         memberName.text = getString(R.string.nameSurname, intent.getStringExtra("name"), intent.getStringExtra("surname"))
         memberRole.text = intent.getStringExtra("role")
         memberEducation.text = getString(R.string.education, intent.getStringExtra("education"))
