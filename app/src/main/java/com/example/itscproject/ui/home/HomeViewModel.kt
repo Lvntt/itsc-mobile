@@ -19,9 +19,12 @@ class HomeViewModel : ViewModel() {
     private val _memberPhotos = MutableLiveData<MutableMap<String, Bitmap>>().apply {
         value = mutableMapOf()
     }
+    private val _memberPhotosImmutable = MutableLiveData<Map<String,Bitmap>>().apply {
+        value = _memberPhotos.value
+    }
     val teamMembers: LiveData<List<TeamMember>> = _teamMembers
     val getIsSuccessful: LiveData<Boolean> = _getIsSuccessful
-    val memberPhotos: LiveData<MutableMap<String, Bitmap>> = _memberPhotos
+    val memberPhotos: LiveData<Map<String, Bitmap>> = _memberPhotosImmutable
 
     init {
         getData(false)
@@ -37,12 +40,12 @@ class HomeViewModel : ViewModel() {
                     if(photoResult.isSuccess){
                         _memberPhotos.value?.put(member.id!!,photoResult.getOrNull()!!)
                         _memberPhotos.value = _memberPhotos.value
+                        _memberPhotosImmutable.value = _memberPhotosImmutable.value
                     }
                 }
             }
             else{
                 _getIsSuccessful.value = false
-                _getIsSuccessful.value = true
             }
         }
     }

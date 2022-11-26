@@ -13,11 +13,11 @@ object TeamMemberRepository {
 
     private val membersMutex = Mutex()
 
-    private var membersList: List<TeamMember> = emptyList()
-    private var memberPhotoMap: MutableMap<String, Bitmap> = mutableMapOf()
+    private val membersMap: MutableMap<String,TeamMember> = mutableMapOf()
+    private val memberPhotoMap: MutableMap<String, Bitmap> = mutableMapOf()
 
     suspend fun getMembers(refresh: Boolean): Result<List<TeamMember>> {
-        return if (refresh || membersList.isEmpty()) {
+        return if (refresh || membersMap.isEmpty()) {
             withContext(externalScope.coroutineContext) {
                 val result = try{
                     val response = TeamMemberDataSource.getTeamMembers()
@@ -33,13 +33,25 @@ object TeamMemberRepository {
                 result.also { res ->
                     membersMutex.withLock {
                         if (res.isSuccess) {
-                            membersList = res.getOrDefault(membersList)
+                            val newData = res.getOrDefault(emptyList())
+                            membersMap.clear()
+                            for(teamMember in newData){
+                                teamMember.id?.let { membersMap.put(it,teamMember) }
+                            }
                         }
                     }
                 }
             }
         } else {
-            Result.success(membersMutex.withLock { this.membersList })
+            Result.success(membersMutex.withLock { ArrayList(this.membersMap.values) })
+        }
+    }
+
+    fun getCachedMember(id: String): Result<TeamMember>{
+        return if(membersMap[id] != null){
+            Result.success(membersMap[id]!!)
+        } else {
+            Result.failure(Exception("Member not found"))
         }
     }
 

@@ -17,11 +17,11 @@
         <ImageView
             android:id="@+id/team_member_photo"
             android:layout_width="match_parent"
-            android:layout_height="170dp"
+            android:layout_height="250dp"
 
             android:background="@drawable/round_outline"
             android:clipToOutline="true"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/frankie" />
