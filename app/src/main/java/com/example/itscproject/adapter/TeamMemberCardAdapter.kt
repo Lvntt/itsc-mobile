@@ -49,7 +49,7 @@ class TeamMemberCardAdapter(
             holder.teamMemberPhoto.setImageBitmap(memberPhotos[teamMember.id])
             holder.teamMemberPhoto.scaleType = ImageView.ScaleType.CENTER_CROP
         } else {
-            holder.teamMemberPhoto.setImageResource(R.drawable.ic_menu_camera)
+            holder.teamMemberPhoto.setImageResource(R.drawable.user_placeholder)
             holder.teamMemberPhoto.scaleType = ImageView.ScaleType.FIT_CENTER
         }
         holder.teamMemberName.text = holder.itemView.context.getString(R.string.nameSurname, teamMember.name, teamMember.surname)

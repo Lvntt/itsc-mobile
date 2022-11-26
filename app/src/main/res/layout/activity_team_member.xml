@@ -50,7 +50,7 @@
                             android:layout_height="250dp"
                             android:background="@drawable/round_outline"
                             android:scaleType="centerCrop"
-                            app:srcCompat="@drawable/frankie" />
+                            app:srcCompat="@drawable/user_placeholder" />
 
                     </com.google.android.material.card.MaterialCardView>
 
